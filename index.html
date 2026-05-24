@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Sayangku ✨</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            font-family: 'Segoe UI', sans-serif;
+            overflow: hidden;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 85%;
+            max-width: 400px;
+            min-height: 250px;
+            display: none; 
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        /* Slide pertama muncul otomatis */
+        #slide1 { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        h1 { color: #d63384; font-size: 1.5rem; margin-top: 10px; }
+        p { color: #444; line-height: 1.5; font-size: 1.05rem; }
+
+        /* Gaya untuk foto di slide 5 */
+        .foto-kita {
+            width: 150px; 
+            height: 150px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            border: 5px solid #ff4757; 
+            margin: 15px auto;
+            display: block;
+        }
+
+        .btn {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover { background: #ff6b81; transform: translateY(-3px); }
+
+        audio {
+            width: 100%;
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card" id="slide1">
+        <h1>Halo Vianka Cantik! ✨</h1>
+        <p>Hai, ini website yang aku bikin khusus untuk kamu sayangku...</p>
+        <button class="btn" onclick="pindahSlide(2)">Klik Lanjut ❤️</button>
+    </div>
+
+    <div class="card" id="slide2">
+        <h1>Sayang Tahu Gak? 🤔</h1>
+        <p>Belajar coding itu ternyata seru, apalagi alasannya karena pengen bikin kamu senyum.</p>
+        <button class="btn" onclick="pindahSlide(3)">Lanjut lagi...</button>
+    </div>
+
+    <div class="card" id="slide3">
+        <h1>Terima Kasih 🌹</h1>
+        <p>Makasih ya udah selalu sabar dan ada buat aku sampai sekarang.</p>
+        <button class="btn" onclick="pindahSlide(4)">Ada lagi nih</button>
+    </div>
+
+    <div class="card" id="slide4">
+        <h1>Janji Ya? 🤙</h1>
+        <p>Buat sama-sama terus sampai akhir, kita capai mimpi kita satu-satu.</p>
+        <button class="btn" onclick="pindahSlide(5)">Terakhir...</button>
+    </div>
+
+    <div class="card" id="slide5">
+        <h1>I Love You! ❤️</h1>
+        
+        <img src="foto.jpg" alt="Foto Kita" class="foto-kita">
+        
+        <p>Semoga kamu suka sama hadiah' kecil ini. Have a great day, sayang!</p>
+        
+        <audio id="musik" controls>
+            <source src="lagu.mp3" type="audio/mpeg">
+            Browser kamu tidak mendukung pemutar musik.
+        </audio>
+
+        <button class="btn" style="background: #57606f;" onclick="location.reload()">Ulang dari Awal ✨</button>
+    </div>
+
+    <script>
+        function pindahSlide(nomorSlide) {
+            // Sembunyikan semua slide
+            const semuaKartu = document.querySelectorAll('.card');
+            semuaKartu.forEach(kartu => {
+                kartu.style.display = 'none';
+            });
+
+            // Munculkan slide yang dituju
+            const slideTujuan = document.getElementById('slide' + nomorSlide);
+            slideTujuan.style.display = 'block';
+
+            // Kalau sampai di slide 5, lagu otomatis putar
+            if (nomorSlide === 5) {
+                const lagu = document.getElementById('musik');
+                lagu.play().catch(error => {
+                    console.log("Autoplay dicegah browser, silakan klik play manual.");
+                });
+            }
+        }
+    </script>
+
+</body>
+</html>
